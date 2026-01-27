@@ -11,7 +11,9 @@ module wheel() {
     outer_rad   = 19.8 / 2;
     
     central_cutout_rad   = 17.6 / 2;
-    central_cutout_width = 2.5;
+//    central_cutout_width = 2.5;
+    
+    central_cutout_width = total_width - middle_width;
 
     cutout_df = total_width/2;
     
@@ -25,12 +27,12 @@ module wheel() {
     difference() {
         union() {
             cyl(l=middle_width, r=middle_rad, fillet=0.3);
-            cyl(l=total_width , r=outer_rad );
+            cyl(l=total_width , r=outer_rad);
         }
         
         union() {
             translate([0, 0, cutout_df])
-                cyl(l=central_cutout_width*2, r=central_cutout_rad, fillet=1);
+                cyl(l=central_cutout_width*2, r=central_cutout_rad, fillet=2);
             
 //            translate([0, 0, -cutout_df])
 //                cyl(l=central_cutout_width*2, r=central_cutout_rad, fillet=1);
@@ -48,8 +50,20 @@ module wheel() {
             }
         }
     }    
-
     
+    insert_rad_top1 = 9.5/2;
+    insert_rad_top1_bord = 10/2;
+    
+    insert_rad_top2_bord = 8/2;
+    insert_width_top2 = 11 - total_width;
+    
+//    translate([0, 0, middle_width/2]) {
+    translate([0, 0, total_width/2 - central_cutout_width/2]) {
+        cyl(l=central_cutout_width, r1=hole_inn_radius, r2=insert_rad_top1);
+        
+        translate([0, 0, central_cutout_width/2 - 0.5])
+            cyl(l=1, r=insert_rad_top1_bord);
+    }
     
 }
 
