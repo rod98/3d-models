@@ -24,7 +24,7 @@ tolerance = 0.5;
 
 conn_mal([10, 20, 30], tolerance);
 
-difference() {
-    cube(100, 100, 100);
-    conn_fem([10, 20, 30], tolerance);
-}
+//difference() {
+//    cube(100, 100, 100);
+//    conn_fem([10, 20, 30], tolerance);
+//}

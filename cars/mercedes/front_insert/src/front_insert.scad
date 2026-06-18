@@ -12,16 +12,16 @@ logo_iwall =  1;
 logo_width =  1;
 logo_rad   =  5;
 
-body_up_height = 2;
-body_dn_height = 3.3;
-body_up_radius = 2.4;
-body_dn_radius = 2.6;
-gear_radius    = 3.4;
-gear_height    = 1.2;
+body_up_height = 2.6;
+body_dn_height = 3.6;
+body_up_radius = 4.8/2;
+body_dn_radius = 5.2/2;
+gear_radius    = 6.9/2;
+gear_height    = 1.3;
 
 logo_start_height = body_up_height + gear_height;
 
-logo_conn_len =  body_up_height + gear_height + body_dn_height / 2;
+logo_conn_len = body_up_height + gear_height + body_dn_height / 2;
 
 c_logo2body = [
     2, 
@@ -31,7 +31,7 @@ c_body2down = [
     c_logo2body.x, 
     body_dn_height / 1.8
 ];
-c_body2tail=[4.8, 1.8, 8];
+c_body2tail=[4.8, 2.0, 8];
 
 module print() {
     body_up(
@@ -56,6 +56,7 @@ module print() {
                 logo_width=logo_width, 
                 conn2logo=c_body2down,
                 conn2tail=c_body2tail,
+                conn_bump=3.1,
                 tolerance=0.1
             );
 }
