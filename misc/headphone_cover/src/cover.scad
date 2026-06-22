@@ -77,7 +77,7 @@ difference()
             cyl(l=cover_side_thicc, d=outer_diam, $fn = fn, fillet1=cover_side_thicc / 2);
     }
     translate([-hole_position, 0, 0])
-        tube(1.8, 0, 10);
+        tube(1.2, 0, 10);
     jack_case(0);
     line_w = 12.5;
     translate([-(outer_diam+cutout_depth * 2)/2, -line_w/2, -5])
