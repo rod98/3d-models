@@ -70,25 +70,7 @@ module angle_stopper() {
         }
         
         // the lower part that is almost part of the body
-        difference() 
-        {
-            cyl(4.2, r=r_vlim, anchor=BACK+TOP, $fn=fn);
-            translate([-body_len/2, 0, 1])
-                cube([80, 80, 10], anchor=RIGHT+TOP);
-            translate([body_len/2, 0, 1])
-                cube([80, 80, 10], anchor=LEFT+TOP);
-            translate([0, -main_cutoff_dist, 1])
-                cube([r * 4, 50, 10], anchor=BACK+TOP);
-            
-            translate([0, 3.48, -5])
-                rotate([-55, 0, 0])
-                    cube([15, 10, 15], center=true);
-            
-            // wire hole - cannot make it small, 
-            // because it starts bending at this point
-            translate([0, -main_cutoff_dist, 0])
-                cyl(h+10, d=3, $fn=fn);
-        }
+        
     }
 }
 
@@ -101,6 +83,11 @@ module body() {
         hor_axis_len = 23.6;
         
         y_mov = -2.4995;
+        
+        r_vlim = 7.78;
+        main_cutoff_dist = 5.5;
+        
+        h = 2.7;
         
         translate([0, y_mov, 0])
         difference()
@@ -118,6 +105,28 @@ module body() {
                 
                 translate([0, 0, cyl_r])
                     cube([body_len, 8, 11.82-cyl_r], anchor=BOTTOM);
+                    
+                // the overhanging part 
+                translate([0, 5.5 - y_mov, 10.4638]) 
+                difference() 
+                {
+                    cyl(4.2, r=r_vlim, anchor=BACK+TOP, $fn=fn);
+                    translate([-body_len/2, 0, 1])
+                        cube([80, 80, 10], anchor=RIGHT+TOP);
+                    translate([body_len/2, 0, 1])
+                        cube([80, 80, 10], anchor=LEFT+TOP);
+                    translate([0, -main_cutoff_dist, 1])
+                        cube([50, 50, 10], anchor=BACK+TOP);
+                    
+                    translate([0, 3.48, -5])
+                        rotate([-55, 0, 0])
+                            cube([15, 10, 15], center=true);
+                    
+                    // wire hole - cannot make it small, 
+                    // because it starts bending at this point
+                    translate([0, -main_cutoff_dist, 0])
+                        cyl(h+10, d=3, $fn=fn);
+                }
             }
             
             // wire hole
