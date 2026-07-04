@@ -138,7 +138,7 @@ module body() {
                 cyl(d=2, h=4, anchor=BOTTOM, orient=LEFT, $fn=fn);
                 
                 translate([-4, 0, 0])
-                    rotate([-15, 0, 0])
+                    rotate([-17, 0, 0])
                     torus_quarter(6.08);
             }
             
@@ -193,24 +193,31 @@ module vaxis() {
     }
 }
 
-translate([0, 16, 0]) {
-    angle_stopper();
-    part();
-}
+//translate([0, 16, 0]) {
+//    angle_stopper();
+//    part();
+//}
 
 module remake() {
     vaxis();
     difference() 
     {
         body();
-        translate([0, 0, 13]) 
-        rotate([-15, 0, 0])
-        cyl(d=2, h=4.0, $fn=fn, anchor=TOP);
+        translate([0, 0.1, 12.2]) {
+            rotate([-16.7, 0, 0])
+            cyl(d=2, h=3.3, $fn=fn, anchor=TOP);
+        }
     }
     angle_stopper();
 }
 
-remake();
+half_of(BOTTOM, cp=[0, 0, 10])
+//difference() 
+{
+//    cuboid(100);
+    remake();
+}
+
 
 
 
