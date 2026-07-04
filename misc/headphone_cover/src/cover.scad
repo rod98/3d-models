@@ -49,7 +49,7 @@ module jack_case(inner) {
                 {
                     tube(jack_outer_diam, inner, jack_total_len);
                     translate([
-                        -9.45, 
+                        -9.85, 
                         -100/2, 
                         -jack_total_len/2 + 2.7
                     ])
