@@ -11,6 +11,8 @@ body_len = 13.0;
 
 alpha=1;
 
+hor_grabber_rad = 11;
+
 module torus_quarter(r_maj) {
 //    difference() {
     translate([0, 0, -1])
@@ -34,7 +36,7 @@ module angle_stopper() {
     // r = 7.855;
     // main_cutoff_dist = 5.5;
     
-    r = 11;
+    r = hor_grabber_rad;
     main_cutoff_dist = 5.5;
     side_cutoff_dist = 8.7;
     
@@ -198,7 +200,7 @@ module remake() {
     angle_stopper();
 }
 
-//half_of(BOTTOM, cp=[0, 0, 10])
+//half_of(BOTTOM, cp=[0, 0, 11.5])
 //difference() 
 {
 //    cuboid(100);
