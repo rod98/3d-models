@@ -9,7 +9,7 @@ fn = 90;
 
 body_len = 13.0;
 
-alpha=1.5;
+alpha=1;
 
 module torus_quarter(r_maj) {
 //    difference() {
@@ -90,7 +90,8 @@ module angle_stopper() {
 }
 
 module body() {
-    color("blue", alpha=alpha) {
+    color("blue", alpha=alpha) 
+    {
         cyl_r = 7.98/2;
         
         hor_axis_dv = -0.327;
@@ -103,21 +104,6 @@ module body() {
         {
             union()
             {
-    //            Too complicated bruh
-    //            cyl(r=cyl_r, h=13, orient=LEFT, anchor=LEFT, $fn=fn)
-    //            {
-    ////                position(BOTTOM) 
-    ////                    translate([hor_axis_dv, 0, 0])
-    ////                        cyl(l=3.5, d=3.7, anchor=TOP);
-    //                
-    //                align(BOTTOM, CENTER, inside=true) 
-    //                    translate([hor_axis_dv, 0, 0])
-    //                        cyl(l=3.5, d=2.7);
-    //                
-    //                position(TOP) 
-    //                    translate([hor_axis_dv, 0, 0])
-    //                        cyl(l=7, d=3.7, anchor=BOTTOM);
-    //            };
                 translate([body_len/2, 0, cyl_r])
                 {
                     cyl(r=cyl_r, h=13.0, orient=LEFT, anchor=BOTTOM, $fn=fn);
@@ -134,9 +120,10 @@ module body() {
             // wire hole
             translate([body_len/2 + 3.55, 0, cyl_r + hor_axis_dv])
             {
-//                color_this("white")
+                color_this("white")
                 cyl(d=2, h=4, anchor=BOTTOM, orient=LEFT, $fn=fn);
                 
+                color_this("aliceblue")
                 translate([-4, 0, 0])
                     rotate([-17, 0, 0])
                     torus_quarter(6.08);
@@ -193,10 +180,10 @@ module vaxis() {
     }
 }
 
-//translate([0, 16, 0]) {
-//    angle_stopper();
-//    part();
-//}
+translate([0, 16, 0]) {
+    angle_stopper();
+    part();
+}
 
 module remake() {
     vaxis();
@@ -211,7 +198,7 @@ module remake() {
     angle_stopper();
 }
 
-half_of(BOTTOM, cp=[0, 0, 10])
+//half_of(BOTTOM, cp=[0, 0, 10])
 //difference() 
 {
 //    cuboid(100);
