@@ -7,7 +7,8 @@ use <BOSL2/shapes3d.scad>
 
 fn = 90;
 
-body_len = 13.0;
+body_len = 13.4;
+hor_grabber_len = 16.4;
 
 alpha=1;
 
@@ -38,7 +39,7 @@ module angle_stopper() {
     
     r = hor_grabber_rad;
     main_cutoff_dist = 5.5;
-    side_cutoff_dist = 8.7;
+    side_cutoff_dist = hor_grabber_len / 2;
     
     h = 2.7;
     
@@ -108,15 +109,15 @@ module body() {
             {
                 translate([body_len/2, 0, cyl_r])
                 {
-                    cyl(r=cyl_r, h=13.0, orient=LEFT, anchor=BOTTOM, $fn=fn);
+                    cyl(r=cyl_r, h=body_len, orient=LEFT, anchor=BOTTOM, $fn=fn);
                     
-                    translate([3.55, 0, hor_axis_dv]) {
+                    translate([(13 - body_len) / 2 + 3.55, 0, hor_axis_dv]) {
                         cyl(d=3.7, h=hor_axis_len, anchor=BOTTOM, orient=LEFT, $fn=fn);
                     }
                 }
                 
                 translate([0, 0, cyl_r])
-                    cube([13, 8, 11.82-4], anchor=BOTTOM);
+                    cube([body_len, 8, 11.82-cyl_r], anchor=BOTTOM);
             }
             
             // wire hole
