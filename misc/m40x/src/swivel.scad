@@ -11,26 +11,6 @@ body_len = 13.0;
 
 alpha=1.5;
 
-//module stencil() {
-//    core_height = 12.8;
-//    v_offset    = 12.1;
-//    
-//    key_h = 5;
-//    key_w = 2.5;
-//    difference()
-//    {
-//        translate([0, 0, v_offset + core_height / 2])
-//        {
-//            difference() {
-//                cyl(l=core_height, d=10, $fn=fn);
-//                cyl(l=core_height, d=4.5, $fn=fn);
-//            }
-//        }
-//        translate([-3, -key_w/2, v_offset])
-//            cube([3, key_w, key_h]);
-//    }
-//}
-
 module torus_quarter(r_maj) {
 //    difference() {
     translate([0, 0, -1])
@@ -42,10 +22,6 @@ module torus_quarter(r_maj) {
         align(CENTER, CENTER, inside=true)
         pie_slice(10, 10, 270, spin=-90, orient=TOP);
     }
-    
-//        cube([20, 10, 10], anchor=BOTTOM);
-//        cube([10, 10, 20], anchor=LEFT  );
-//    }
 }
 
 module part() {
