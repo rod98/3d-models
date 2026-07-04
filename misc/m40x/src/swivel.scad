@@ -165,6 +165,9 @@ module body() {
                     rotate([-15, 0, 0])
                     torus_quarter(6.08);
             }
+            
+            translate([0, -3.5, cyl_r * 2 - 0.7])
+                cyl(d=5, h=200, $fn=fn, orient=BACK, anchor=TOP);
         }
     }
 }
