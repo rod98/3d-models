@@ -175,12 +175,12 @@ module vaxis() {
                     cyl(d=inner_d, h=inner_h, $fn=fn, anchor=BOTTOM) {
                         align(TOP, CENTER)
                         cyl(
-                            d1=inner_d, d2=7.4, h=0.35, 
+                            d1=inner_d, d2=7.4, h=1.35, 
                             $fn=fn, anchor=BOTTOM
                         ) {
                             align(TOP, CENTER)
                                 cyl(
-                                    d=7.4, h=1.2, 
+                                    d=7.4, h=0.2, 
                                     $fn=fn, anchor=BOTTOM
                                 );
                         }
@@ -192,10 +192,10 @@ module vaxis() {
     }
 }
 
-translate([0, 16, 0]) {
-    angle_stopper();
-    part();
-}
+//translate([0, 16, 0]) {
+//    angle_stopper();
+//    part();
+//}
 
 module remake() {
     vaxis();
