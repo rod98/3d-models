@@ -2,6 +2,7 @@
 //use <dotSCAD/box_extrude.scad>
 include <BOSL2/std.scad>
 use <BOSL2/shapes3d.scad>
+use <utils/wire_canal.scad>
 
 //use <BOSL/shapes.scad>
 
@@ -14,18 +15,6 @@ alpha=1;
 
 hor_grabber_rad = 11;
 
-module torus_quarter(r_maj) {
-//    difference() {
-    translate([0, 0, -1])
-    diff()
-    torus(
-        r_min=1, r_maj=r_maj, 
-        orient=FRONT, anchor=FRONT, $fn=fn
-    ) {
-        align(CENTER, CENTER, inside=true)
-        pie_slice(10, 10, 270, spin=-90, orient=TOP);
-    }
-}
 
 module part() {
     translate([0.01, 0, -0.28])
@@ -138,7 +127,13 @@ module body() {
                 color_this("aliceblue")
                 translate([-4, 0, 0])
                     rotate([-17, 0, 0])
-                    torus_quarter(6.08);
+                    torus_with_column(
+                        r_maj=6.25,
+                        r_min=1,
+                        angle=90, 
+                        col_len=10, 
+                        fn=90
+                    );
             }
             
             translate([0, -3.5, cyl_r * 2 - 0.7])
@@ -204,19 +199,13 @@ module vaxis() {
 
 module remake() {
     vaxis();
-    difference() 
-    {
-        body();
-        translate([0, 0.1, 12.2]) {
-            rotate([-16.7, 0, 0])
-            cyl(d=2, h=3.3, $fn=fn, anchor=TOP);
-        }
-    }
+    body();
     angle_stopper();
 }
 
-//half_of(BOTTOM, cp=[0, 0, 11.5])
-//difference() 
+//half_of(BOTTOM, cp=[0, 0, 13.5])
+//half_of(RIGHT, cp=[0, 0, 13.5])
+difference() 
 {
 //    cuboid(100);
     remake();
