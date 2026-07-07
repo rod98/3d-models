@@ -151,8 +151,13 @@ module vaxis() {
     base_d = 9.07;
     mid_d  = 7.42;
     
+    post_stagger_height = 9.3;
+    top_ring_height = 0.7;
+    slope_height = 1.25;
+    
     inner_d = 5.0;
-    inner_h = 7.75;
+    inner_h = post_stagger_height - (top_ring_height + slope_height);// 7.75;
+    echo(inner_h);
     
     color_this("green") 
     difference()
@@ -175,12 +180,12 @@ module vaxis() {
                     cyl(d=inner_d, h=inner_h, $fn=fn, anchor=BOTTOM) {
                         align(TOP, CENTER)
                         cyl(
-                            d1=inner_d, d2=7.4, h=1.35, 
+                            d1=inner_d, d2=7.4, h=slope_height, 
                             $fn=fn, anchor=BOTTOM
                         ) {
                             align(TOP, CENTER)
                                 cyl(
-                                    d=7.4, h=0.2, 
+                                    d=7.4, h=top_ring_height, 
                                     $fn=fn, anchor=BOTTOM
                                 );
                         }
