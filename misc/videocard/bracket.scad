@@ -9,7 +9,7 @@ outer_d = 5;
 shoulder_w = 3;
 shoulder_h = 1.5;
 
-tube_height=3;
+tube_height=3.8;
 
 xdist = 40.5 + inner_d - 0.25;
 ydist = 40.5 + inner_d - 0.25;
@@ -20,7 +20,7 @@ difference()
     {
         ycopies(ydist, 2)
         xcopies(xdist, 2)
-        tube(id=inner_d, od=outer_d, h=tube_height, $fn=90, anchor=BOTTOM);
+        cyl(d=outer_d, h=tube_height, $fn=90, anchor=BOTTOM);
 
         zrot(45)
         cube([xdist * sqrt(2), shoulder_w, shoulder_h], anchor=CENTER+BOTTOM);
@@ -33,9 +33,14 @@ difference()
     
     union()
     {
+        translate([0, 0, 1])
         ycopies(ydist, 2)
         xcopies(xdist, 2)
-        cyl(d=inner_d, h=tube_height+10, $fn=90);
+        cyl(d=inner_d, h=tube_height, $fn=90, anchor=BOTTOM);
+        
+        ycopies(ydist, 2)
+        xcopies(xdist, 2)
+        cyl(d=2, h=1, $fn=90, anchor=BOTTOM);
         
         cube([14, 14, shoulder_h+5], anchor=CENTER);
     }
