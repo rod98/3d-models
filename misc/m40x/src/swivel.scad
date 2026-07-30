@@ -6,7 +6,7 @@ use <utils/wire_canal.scad>
 
 //use <BOSL/shapes.scad>
 
-fn = 90;
+fn = 180;
 
 body_len = 13.4;
 hor_grabber_len = 16.4;
@@ -64,7 +64,7 @@ module angle_stopper() {
 }
 
 module body() {
-    color("blue", alpha=alpha) 
+    color_this("blue") //, alpha=alpha) 
     {
         cyl_r = 7.98/2;
         
@@ -88,7 +88,7 @@ module body() {
                     cyl(r=cyl_r, h=body_len, orient=LEFT, anchor=BOTTOM, $fn=fn);
                     
                     translate([(13 - body_len) / 2 + 3.55, 0, hor_axis_dv]) {
-                        cyl(d=3.7, h=hor_axis_len, anchor=BOTTOM, orient=LEFT, $fn=fn);
+                        cyl(d=cyl_r, h=hor_axis_len, anchor=BOTTOM, orient=LEFT, $fn=fn);
                     }
                 }
                 
@@ -124,9 +124,9 @@ module body() {
                 color_this("white")
                 cyl(d=2, h=4, anchor=BOTTOM, orient=LEFT, $fn=fn);
                 
-                color_this("aliceblue")
+                color_this("skyblue")
                 translate([-4, 0, 0])
-                    rotate([-17, 0, 0])
+                    rotate([-16.8, 0, 0])
                     torus_with_column(
                         r_maj=6.25,
                         r_min=1,
@@ -136,6 +136,7 @@ module body() {
                     );
             }
             
+            // "logo"
             translate([0, -3.5, cyl_r * 2 - 0.7])
                 cyl(d=5, h=200, $fn=fn, orient=BACK, anchor=TOP);
         }
@@ -179,10 +180,10 @@ module vaxis() {
                             $fn=fn, anchor=BOTTOM
                         ) {
                             align(TOP, CENTER)
-                                cyl(
-                                    d=7.4, h=top_ring_height, 
-                                    $fn=fn, anchor=BOTTOM
-                                );
+                            cyl(
+                                d=7.4, h=top_ring_height, 
+                                $fn=fn, anchor=BOTTOM
+                            );
                         }
                     }
                 }
@@ -204,7 +205,7 @@ module remake() {
 }
 
 //half_of(BOTTOM, cp=[0, 0, 13.5])
-//half_of(RIGHT, cp=[0, 0, 13.5])
+//half_of(LEFT, cp=[0, 0, 13.5])
 difference() 
 {
 //    cuboid(100);

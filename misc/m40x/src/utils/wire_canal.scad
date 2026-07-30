@@ -46,3 +46,6 @@ module torus_with_column(r_maj, r_min=1, angle=90, col_len=10, fn=90) {
 }
 
 torus_with_column(r_maj=5, angle=90, fn=90);
+
+translate([0, 10, 0])
+torus_with_column(r_maj=5, angle=270, fn=90);
