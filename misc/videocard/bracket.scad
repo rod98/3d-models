@@ -3,7 +3,7 @@ use <BOSL2/shapes3d.scad>
 
 fn=90;
 
-inner_d = 2.8;
+inner_d = 2.85;
 outer_d = 5;
 
 shoulder_w = 3;
@@ -11,8 +11,8 @@ shoulder_h = 1.5;
 
 tube_height=3;
 
-xdist = 40.5 + inner_d - 0.2;
-ydist = 40.5 + inner_d - 0.2;
+xdist = 40.5 + inner_d - 0.25;
+ydist = 40.5 + inner_d - 0.25;
 
 difference() 
 {
